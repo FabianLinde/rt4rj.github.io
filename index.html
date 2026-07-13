@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RT4RJ — Regulatory Technology for Fundamental Rights &amp; Procedural Justice · JURIX 2026</title>
+<meta name="description" content="RT4RJ: a proposed one-day JURIX 2026 workshop on regulatory technology for fundamental rights and procedural justice.">
+<meta name="color-scheme" content="light">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  img { max-width: 100%; }
+
+  :root {
+    --paper: #f6f4e5;
+    --surface: #FFFFFF;
+    --surface-2: #F3F1E9;
+    --ink: #080909;
+    --ink-soft: #323438;
+    --ink-faint: #474b55;
+    --line: rgba(27, 34, 51, 0.10);
+    --line-strong: rgba(42, 47, 60, 0.18);
+    --gold: #22C55E;
+    --gold-bright: #B08A2E;
+
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+
+    --maxw: 1040px;
+    --step--1: clamp(0.76rem, 0.73rem + 0.14vw, 0.83rem);
+    --step-0: clamp(1rem, 0.98rem + 0.14vw, 1.08rem);
+    --step-1: clamp(1.15rem, 1.08rem + 0.34vw, 1.35rem);
+    --step-2: clamp(1.4rem, 1.28rem + 0.6vw, 1.8rem);
+    --step-3: clamp(1.7rem, 1.4rem + 1.3vw, 2.4rem);
+    --step-wm: clamp(3.4rem, 1.8rem + 8vw, 7.5rem);
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: var(--step-0);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .wrap { max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 2.5rem); }
+  section { scroll-margin-top: 5rem; }
+
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ---------- TOP MENU ---------- */
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(246, 244, 229, 0.9);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+  }
+  .nav-inner {
+    min-height: 4.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .nav-brand {
+    font-family: var(--mono);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .nav-brand .four { color: var(--gold); }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(0.8rem, 2vw, 1.4rem);
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    color: var(--ink-faint);
+  }
+  .nav-links a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links .nav-cta {
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    padding: 0.45rem 0.8rem;
+  }
+  .nav-links .nav-cta:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  @media (max-width: 720px) {
+    .nav-inner {
+      min-height: auto;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-block: 0.9rem;
+      gap: 0.75rem;
+    }
+    .nav-links {
+      width: 100%;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.65rem 1rem;
+    }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero { border-bottom: 1px solid var(--line); }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.42fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    padding-top: clamp(3rem, 8vw, 6rem);
+    padding-bottom: clamp(3.5rem, 8vw, 6rem);
+  }
+  .hero-copy { min-width: 0; }
+  .wordmark {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: var(--step-wm);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    display: inline-flex; align-items: baseline;
+    margin: 0 0 1.6rem;
+  }
+  .wordmark .four {
+    color: var(--gold);
+    position: relative;
+    padding: 0 0.04em;
+  }
+  .wordmark .four::after {
+    content: ""; position: absolute; left: 0.08em; right: 0.08em; bottom: 0.14em;
+    height: 0.06em; background: var(--gold); opacity: 0.35;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: var(--step-3);
+    line-height: 1.18;
+    letter-spacing: -0.005em;
+    margin: 0 0 1.6rem;
+    text-wrap: balance;
+    max-width: 26ch;
+    color: var(--ink);
+  }
+  h1 em { font-style: italic; color: var(--gold); }
+  .lede {
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 58ch;
+    margin: 0 0 2.6rem;
+    text-wrap: pretty;
+  }
+  .lede code {
+    font-family: var(--mono); font-size: 0.85em;
+    background: var(--surface-2); color: var(--ink);
+    padding: 0.1em 0.4em; border-radius: 4px; white-space: nowrap;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 0.6rem 0.9rem;
+    font-family: var(--mono); font-size: var(--step--1);
+    letter-spacing: 0.02em; color: var(--ink-faint);
+  }
+  .meta b { color: var(--ink); font-weight: 500; }
+  .meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); display: inline-block; }
+  .hero-visual {
+    justify-self: end;
+    position: relative;
+    margin-right: clamp(-7rem, -10vw, -3rem);
+    margin-top: clamp(-4rem, -6vw, -2rem);
+  }
+  .figure-kicker {
+    position: absolute;
+    top: -2.15rem;
+    right: 1.2rem;
+    font-family: var(--mono);
+    font-size: var(--step--1);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .paper-kicker {
+    position: absolute;
+    top: -0.6rem;
+    right: 1.2rem;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .title-accent { color: var(--gold); }
+  .justice-symbol {
+    width: clamp(18rem, 38vw, 29rem);
+    aspect-ratio: 1;
+    color: var(--gold);
+  }
+  .justice-symbol svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .justice-symbol .halo,
+  .justice-symbol .ring,
+  .justice-symbol .trace,
+  .justice-symbol .shard {
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .justice-symbol .halo { stroke-width: 1.1; opacity: 0.16; }
+  .justice-symbol .ring { stroke-width: 4; opacity: 0.78; }
+  .justice-symbol .trace { stroke-width: 1.7; opacity: 0.34; }
+  .justice-symbol .shard { stroke-width: 2.4; opacity: 0.58; }
+  .justice-symbol .void {
+    fill: var(--ink);
+  }
+  .justice-symbol .glow {
+    fill: rgba(34, 197, 94, 0.12);
+  }
+  .justice-symbol .spark {
+    fill: var(--paper);
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+  @media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-visual {
+      justify-self: start;
+      margin-right: 0;
+      margin-top: -0.8rem;
+      opacity: 0.75;
+    }
+    .figure-kicker,
+    .paper-kicker { right: auto; left: 0.4rem; }
+    .justice-symbol { width: clamp(11rem, 44vw, 16rem); }
+  }
+  @media (max-width: 520px) {
+    .hero-visual { display: none; }
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section { padding-block: clamp(3.5rem, 7vw, 6rem); border-bottom: 1px solid var(--line); }
+  .sec-head { margin-bottom: 2.4rem; }
+  .sec-head .eyebrow { display: block; margin-bottom: 0.9rem; }
+  h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: var(--step-3); line-height: 1.15;
+    letter-spacing: -0.01em; margin: 0; text-wrap: balance;
+    max-width: 24ch;
+  }
+  .prose { max-width: 64ch; color: var(--ink-soft); }
+  .prose p { margin: 0 0 1.2rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+  .prose code {
+    font-family: var(--mono); font-size: 0.85em;
+    background: var(--surface-2); color: var(--ink);
+    padding: 0.1em 0.4em; border-radius: 4px;
+  }
+
+  .lead-cols { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  @media (max-width: 760px) { .lead-cols { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: 3rem; padding-top: 2.4rem;
+    border-top: 1px solid var(--line);
+  }
+  .stat .val {
+    font-family: var(--serif); font-size: var(--step-2); font-weight: 400;
+    color: var(--ink); line-height: 1; font-variant-numeric: tabular-nums;
+  }
+  .stat .cap { display: block; margin-top: 0.6rem; color: var(--ink-faint); font-size: var(--step--1); line-height: 1.4; }
+  @media (max-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); gap: 1.8rem 1.5rem; } }
+
+  /* ---------- AREAS (full lists) ---------- */
+  .area {
+    display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(1.2rem, 4vw, 3.5rem);
+    padding: 2.3rem 0; border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  @media (max-width: 760px) { .area { grid-template-columns: 1fr; gap: 1.2rem; } }
+  .a-head { position: sticky; top: 1.5rem; }
+  @media (max-width: 760px) { .a-head { position: static; } }
+  .a-head .code {
+    font-family: var(--mono); font-size: var(--step--1);
+    letter-spacing: 0.08em; color: var(--gold);
+  }
+  .a-head h3 {
+    font-family: var(--serif); font-size: var(--step-2); font-weight: 400;
+    margin: 0.6rem 0 0.5rem; line-height: 1.15; letter-spacing: -0.01em; color: var(--ink);
+  }
+  .a-head .count { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-faint); text-transform: uppercase; }
+  .items { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: clamp(1.5rem, 3vw, 3rem); }
+  @media (max-width: 980px) { .items { columns: 1; } }
+  .items li {
+    break-inside: avoid; -webkit-column-break-inside: avoid;
+    position: relative; padding: 0.4rem 0 0.4rem 1.2rem;
+    color: var(--ink-soft); font-size: 0.95rem; line-height: 1.45;
+  }
+  .items li::before { content: "\203A"; color: var(--gold); position: absolute; left: 0; top: 0.4rem; font-family: var(--mono); }
+  .items li b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- TWO-COL FORMAT ---------- */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .flow { list-style: none; margin: 0; padding: 0; }
+  .flow li { display: flex; gap: 1.1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .flow li:first-child { border-top: none; padding-top: 0; }
+  .flow .k { color: var(--gold); font-family: var(--mono); font-size: var(--step--1); padding-top: 0.25rem; min-width: 1.8rem; }
+  .flow .t strong { display: block; color: var(--ink); font-weight: 600; margin-bottom: 0.2rem; }
+  .flow .t span { color: var(--ink-soft); font-size: 0.95rem; }
+
+  .facts { list-style: none; margin: 0; padding: 0; }
+  .facts li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid var(--line); }
+  .facts li:first-child { border-top: none; padding-top: 0; }
+  .facts .lbl { color: var(--ink-soft); }
+  .facts .v { font-family: var(--mono); font-size: var(--step--1); color: var(--ink); text-align: right; letter-spacing: 0.02em; }
+
+  /* ---------- EXPERTISE + INSTITUTIONS ---------- */
+  .strands { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem clamp(2rem, 5vw, 4rem); }
+  @media (max-width: 720px) { .strands { grid-template-columns: 1fr; gap: 2rem; } }
+  .strand .role { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .strand h3 { font-family: var(--serif); font-size: var(--step-1); font-weight: 400; margin: 0.5rem 0 0.4rem; letter-spacing: -0.005em; color: var(--ink); line-height: 1.2; }
+  .strand p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
+  .strand p code { font-family: var(--mono); font-size: 0.85em; background: var(--surface-2); color: var(--ink); padding: 0.1em 0.4em; border-radius: 4px; }
+
+  .insts { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.5rem; margin-top: 2.8rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+  @media (max-width: 820px) { .insts { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; } }
+  @media (max-width: 620px) { .insts { grid-template-columns: repeat(2, 1fr); } }
+  .inst .ac { font-family: var(--mono); font-size: var(--step-1); font-weight: 600; color: var(--ink); letter-spacing: 0.01em; }
+  .inst .full { display: block; margin-top: 0.3rem; color: var(--ink-soft); font-size: 0.82rem; line-height: 1.35; }
+  .inst .cty { display: block; margin-top: 0.2rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); }
+  .note { margin-top: 1.8rem; font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.02em; color: var(--ink-faint); }
+  .note::before { content: "// "; color: var(--gold); }
+
+  /* ---------- CTA ---------- */
+  .cta { border-bottom: none; text-align: center; }
+  .cta .eyebrow { display: block; margin-bottom: 0.9rem; }
+  .cta h2 { margin-inline: auto; }
+  .cta .prose { margin: 1.2rem auto 2.4rem; text-align: center; }
+  .btnrow { display: flex; gap: 0.9rem; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.7rem; border-radius: 100px;
+    font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.04em;
+    font-weight: 500; text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--gold); color: #1a1405; }
+  .btn.ghost { border: 1px solid var(--line-strong); color: var(--ink); }
+  .btn.ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  footer { padding-block: 2.6rem; color: var(--ink-faint); font-size: 0.82rem; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.8rem; align-items: baseline; }
+  footer .fm { font-family: var(--mono); font-weight: 600; color: var(--ink); letter-spacing: 0.02em; }
+  footer .fm .four { color: var(--gold); }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav" aria-label="Main navigation">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#top">RT<span class="four">4</span>RJ</a>
+    <div class="nav-links">
+      <a href="#about">Motivation</a>
+      <a href="#areas">Topics</a>
+      <a href="#format">Format</a>
+      <a href="#organizers">Organizers</a>
+      <a class="nav-cta" href="mailto:meem.manab@upm.es?subject=RT4RJ%20interest">Register interest</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <div class="wordmark">RT<span class="four">4</span>RJ</div>
+      <h1>Regulatory Technology <span class="title-accent">for</span> Fundamental Rights &amp; Procedural Justice</h1>
+      <p class="lede">Regulatory data and AI governance in the EU are increasingly supported by technical infrastructures: impact assessments, algorithmic registers, compliance ontologies, and digital oversight tools. This workshop asks how such systems can help make rights effective in practice, rather than simply recording obligations on paper.</p>
+      <div class="meta">
+        <span><b>One day</b>, in-person / hybrid</span>
+        <span class="dot"></span>
+        <span><b>Six</b> thematic areas</span>
+        <span class="dot"></span>
+        <span>Short papers &amp; demos</span>
+        <span class="dot"></span>
+        <span>Open-access proceedings</span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="figure-kicker">JURIX&nbsp;2026</div>
+      <div class="paper-kicker">Call for Papers</div>
+      <div class="justice-symbol" aria-hidden="true">
+        <svg viewBox="0 0 220 220">
+          <circle class="halo" cx="110" cy="110" r="94"></circle>
+          <circle class="halo" cx="110" cy="110" r="70"></circle>
+          <circle class="glow" cx="110" cy="110" r="61"></circle>
+          <circle class="void" cx="110" cy="110" r="42"></circle>
+          <path class="ring" d="M27 128c28 37 120 30 164-16"></path>
+          <path class="ring" d="M191 91c-30-32-118-25-160 18"></path>
+          <path class="trace" d="M57 63c25-18 70-24 105-8"></path>
+          <path class="trace" d="M48 158c31 18 82 19 122-2"></path>
+          <path class="trace" d="M107 33c13 34 13 117 0 154"></path>
+          <path class="shard" d="M71 111h78"></path>
+          <path class="shard" d="M111 70v80"></path>
+          <path class="shard" d="M82 85l58 54"></path>
+          <circle class="spark" cx="163" cy="72" r="5"></circle>
+          <circle class="spark" cx="54" cy="145" r="4"></circle>
+        </svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="about">
+    <div class="wrap">
+      <div class="lead-cols">
+        <div>
+          <span class="eyebrow" style="display:block;margin-bottom:0.9rem;">&sect;&nbsp;01 &nbsp;Motivation</span>
+          <h2>Regulatory technology, under-theorized as an object of research.</h2>
+        </div>
+        <div class="prose">
+          <p>Digital-rights legislation increasingly depends on technical systems that can represent legal obligations, assess risks, document decisions, and support recourse for affected individuals. Yet many of these tools &mdash; <strong>impact assessments, algorithmic registers, ODR platforms, and compliance ontologies</strong> &mdash; are still rarely studied as AI &amp; Law research objects in their own right.</p>
+          <p>RT4RJ brings these infrastructures into focus through the expertise of researchers already working on data protection, ontology engineering for regulatory obligations, knowledge graphs for deliberative democracy, and access-to-justice research.</p>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat"><span class="val">6</span><span class="cap">Thematic areas, from rights enforcement to adaptive regulation</span></div>
+        <div class="stat"><span class="val">4</span><span class="cap">Universities across four European countries</span></div>
+        <div class="stat"><span class="val">8&ndash;12</span><span class="cap">Accepted submissions anticipated</span></div>
+        <div class="stat"><span class="val">15&ndash;25</span><span class="cap">Attendees, per recent JURIX satellite workshops</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="areas">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">&sect;&nbsp;02 &nbsp;Scope &amp; Topics</span>
+        <h2>Six areas of interest.</h2>
+      </div>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_01</span>
+          <h3>Fundamental Rights Enforcement Technologies</h3>
+          <span class="count">09 topics</span>
+        </div>
+        <ul class="items">
+          <li>Technologies for detecting, monitoring, and reporting rights violations</li>
+          <li>Rights-by-design in the architecture of regulatory and compliance systems</li>
+          <li>Rights safeguards encoding in automated public-sector systems</li>
+          <li>Tools for rights-holders: generating claims, gathering evidence, asserting rights</li>
+          <li>Rights indicators, dashboards, and measurement infrastructures</li>
+          <li>Public procurement as a rights-enforcement instrument</li>
+          <li>Documentation, logging, and traceability as preconditions for rights claims</li>
+          <li>Digital identity, biometrics, and civil registration systems</li>
+          <li>Rights protection in under-resourced enforcement capacity</li>
+        </ul>
+      </article>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_02</span>
+          <h3>Impact Assessments</h3>
+          <span class="count">05 topics</span>
+        </div>
+        <ul class="items">
+          <li>Algorithmic/AI impact assessment methodologies and standards</li>
+          <li>Fundamental rights impact assessments (FRIAs) for regulatory technologies</li>
+          <li>Data Protection Impact Assessments (DPIAs) in practice</li>
+          <li>Ex-ante vs. ex-post impact assessments</li>
+          <li>Distributed assessment responsibilities</li>
+        </ul>
+      </article>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_03</span>
+          <h3>Access to Justice</h3>
+          <span class="count">07 topics</span>
+        </div>
+        <ul class="items">
+          <li>Online dispute resolution (ODR) platforms</li>
+          <li>AI-assisted legal aid, chatbots, and other legal tools</li>
+          <li>Digital divide and barriers for vulnerable/marginalized populations</li>
+          <li>E-filing, virtual hearings, and remote courts</li>
+          <li>Language access and accessibility in digital justice systems</li>
+          <li>Cost and efficiency trade-offs in tech-mediated dispute resolution</li>
+          <li>Disability-inclusive design in digital justice</li>
+        </ul>
+      </article>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_04</span>
+          <h3>Algorithmic Decision-Making, Transparency &amp; Accountability</h3>
+          <span class="count">12 topics</span>
+        </div>
+        <ul class="items">
+          <li>Automated decision-making in high-risk sectors</li>
+          <li>AI-enabled law enforcement and public safety</li>
+          <li>Right to explanation and contestability of algorithmic outcomes</li>
+          <li>Human oversight requirements and practical limits</li>
+          <li>Profiling, scoring, and risk-assessment tools in public administration</li>
+          <li>Procedural safeguards against automation bias</li>
+          <li>Explainable AI (XAI) for high-risk contexts</li>
+          <li>Public registers and disclosure regimes for automated decision systems</li>
+          <li>Algorithmic auditing methodologies and independent oversight bodies</li>
+          <li>Corporate accountability for proprietary/black-box algorithms</li>
+          <li>Whistleblower protections and investigative journalism in exposing algorithmic harms</li>
+          <li>Certification and labeling schemes for compliant AI systems</li>
+        </ul>
+      </article>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_05</span>
+          <h3>Digitalization of Law</h3>
+          <span class="count">07 topics</span>
+        </div>
+        <ul class="items">
+          <li>Legal informatics and machine-readable legislation</li>
+          <li>Smart contracts and their relationship to traditional contract law</li>
+          <li>E-government platforms and digital public services</li>
+          <li>Digitization of legal records, registries, and case law databases</li>
+          <li>Blockchain applications in legal and regulatory processes</li>
+          <li>Interoperability standards across digital legal systems</li>
+          <li>Human-in-the-loop in legal formalization</li>
+        </ul>
+      </article>
+
+      <article class="area reveal">
+        <div class="a-head">
+          <span class="code">AREA_06</span>
+          <h3>Adaptive Regulations &amp; Legal Reasoning</h3>
+          <span class="count">13 topics</span>
+        </div>
+        <ul class="items">
+          <li>Agile and iterative rule-making for fast-evolving technologies</li>
+          <li>Principles-based vs. rules-based regulatory design</li>
+          <li>Real-time/continuous compliance monitoring (RegTech/SupTech)</li>
+          <li>Sunset clauses and periodic regulatory review mechanisms</li>
+          <li>Co-regulation and self-regulation models</li>
+          <li>Cross-jurisdictional harmonization amid regulatory divergence</li>
+          <li>Dynamical jurisprudence and the modeling of law as a complex system</li>
+          <li>AI-assisted legal research and case prediction tools</li>
+          <li>Computational models of legal argumentation and reasoning</li>
+          <li>Large language models in legal drafting and interpretation</li>
+          <li>Formalization of legal norms for machine processing</li>
+          <li>Limits of algorithmic reasoning in addressing legal indeterminacy/discretion</li>
+          <li>Epistemic and normative risks of outsourcing legal judgment to AI</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="format">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">&sect;&nbsp;03 &nbsp;Format &amp; Submissions</span>
+        <h2>A working day for emerging tools and position statements.</h2>
+      </div>
+      <div class="cols">
+        <ul class="flow">
+          <li><span class="k">01</span><span class="t"><strong>Invited talk</strong><span>Framing the regulatory-technology landscape.</span></span></li>
+          <li><span class="k">02</span><span class="t"><strong>Two paper sessions</strong><span>Short papers, 15&ndash;20 min each, organized around the six areas.</span></span></li>
+          <li><span class="k">03</span><span class="t"><strong>Poster &amp; demo slot</strong><span>Compliance tools, ontologies, and prototype systems.</span></span></li>
+          <li><span class="k">04</span><span class="t"><strong>Closing discussion</strong><span>Identifying follow-up collaboration opportunities.</span></span></li>
+        </ul>
+        <div>
+          <ul class="facts">
+            <li><span class="lbl">Short papers</span><span class="v">max 5 pages</span></li>
+            <li><span class="lbl">Extended abstracts / demos</span><span class="v">max 2 pages</span></li>
+            <li><span class="lbl">Formatting</span><span class="v">IOS Press / JURIX</span></li>
+            <li><span class="lbl">Review</span><span class="v">single-blind, PC 10&ndash;15</span></li>
+            <li><span class="lbl">Proceedings</span><span class="v">open access &middot; CEUR-WS</span></li>
+          </ul>
+          <p class="prose" style="margin-top:1.6rem;font-size:0.95rem;">We emphasize emerging work, tools, and position statements over fully mature results, reviewed by a Program Committee drawn from the organizers' networks and the broader AI &amp; Law community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="organizers">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">&sect;&nbsp;04 &nbsp;Organizing Expertise</span>
+        <h2>Computer scientists and legal experts across the workshop scope.</h2>
+      </div>
+      <div class="strands">
+        <div class="strand">
+          <span class="role">Computer Science</span>
+          <h3>AI, ontologies, and regulatory infrastructures</h3>
+          <p>Expertise in ontology engineering, machine-readable regulatory vocabularies, knowledge graphs, compliance representation, algorithmic transparency, and digital legal systems.</p>
+        </div>
+        <div class="strand">
+          <span class="role">Legal Expertise</span>
+          <h3>Rights, justice, and EU data governance</h3>
+          <p>Expertise in data protection, fundamental rights, impact assessments, access to justice, procedural safeguards, deliberative democracy, and adaptive regulation.</p>
+        </div>
+      </div>
+      <div class="insts">
+        <div class="inst"><span class="ac">UPM</span><span class="full">Universidad Polit&eacute;cnica de Madrid</span><span class="cty">Spain</span></div>
+        <div class="inst"><span class="ac">DCU</span><span class="full">Dublin City University</span><span class="cty">Ireland</span></div>
+        <div class="inst"><span class="ac">TCD</span><span class="full">Trinity College Dublin</span><span class="cty">Ireland</span></div>
+        <div class="inst"><span class="ac">UGhent</span><span class="full">Ghent University</span><span class="cty">Belgium</span></div>
+        <div class="inst"><span class="ac">Unibo</span><span class="full">University of Bologna</span><span class="cty">Italy</span></div>
+      </div>
+      <p class="note">Organized by two established research groups across five universities. Names withheld during review.</p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <span class="eyebrow">Call for Contributions</span>
+      <h2>Regulatory technology as an instrument of rights &mdash; not a threat to them.</h2>
+      <p class="prose">We welcome short papers, demos, and position statements from researchers and practitioners across AI, data governance, and law.</p>
+      <div class="btnrow">
+        <a class="btn primary" href="mailto:meem.manab@upm.es?subject=RT4RJ%20interest">Register interest</a>
+        <a class="btn ghost" href="#areas">Browse the areas</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Proposed for JURIX 2026 &middot; 39th Int. Conference on Legal Knowledge and Information Systems</span>
+    <span class="fm">RT<span class="four">4</span>RJ</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
